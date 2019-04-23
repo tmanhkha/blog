@@ -1,3 +1,236 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+form#new_post, body > h1, form.edit_post{
+  margin: 0 20%;
+}
+input[type="submit"] {
+  background-color: #6dc583;
+  border-color: #6dc583;
+}
+
+.actions .back, a.post-back {
+  background-color: #357ebd;
+  border-color: #357ebd;
+}
+a.post-back:hover {
+  color: #fff;
+}
+
+a.post-back, .actions .back {
+  margin-right: 20px;
+}
+
+
+a.back {
+  margin-left: 20px;
+}
+
+input[type="submit"], .actions .back, a.post-back {
+  text-decoration: none !important;
+  color: #fff;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+input#post_image {
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+a:hover { text-decoration:none; }
+.btn
+{
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -o-transition: all .2s linear;
+}
+.btn-read-more
+{
+    padding: 5px;
+    text-align: center;
+    border-radius: 0px;
+    display: inline-block;
+    border: 2px solid #662D91;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+    color:#662D91;
+}
+
+.btn-read-more:hover
+{
+    color: #FFF;
+    background: #662D91;
+}
+
+.post { 
+  border-bottom:1px solid #DDD 
+}
+
+.post-title {
+  color:#662D91; 
+}
+.post .glyphicon {
+  margin-right:5px;
+}
+
+.post-header-line {
+  border-top:1px solid #DDD;border-bottom:1px solid #DDD;padding:5px 0px 5px 15px;font-size: 12px;
+}
+.post-content {
+  padding-bottom: 15px;padding-top: 15px;
+}
+
+a.btn.btn-read-more {
+  border: 1px solid #357ebd;
+  color: #357ebd;
+}
+
+a.btn.btn-read-more:hover {
+  background-color: #357ebd;
+  color: #fff;
+}
+
+a.btn.btn.success.btn-create {
+  background-color: #6dc583;
+  color: #fff;
+  margin-left: 15px;
+  margin-bottom: 20px;
+}
+
+span.dropdown.actions-post {
+  float: right;
+  font-size: 15px;
+  margin-right: 20px;
+  color: black !important;
+}
+
+.dropdown-item {
+  padding: 0rem 1rem;
+}
+
+hr {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.emp-profile{
+  padding: 3%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  border-radius: 0.5rem;
+  background: #fff;
+}
+.profile-img{
+  text-align: center;
+}
+.profile-img img{
+  width: 70%;
+  height: 100%;
+}
+.profile-img .file {
+  position: relative;
+  overflow: hidden;
+  margin-top: -19%;
+  width: 70%;
+  border: none;
+  border-radius: 0;
+  font-size: 15px;
+  background: #212529b8;
+}
+.profile-img .file input {
+  position: absolute;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+.profile-head h5{
+  color: #333;
+}
+.profile-head h6{
+  color: #0062cc;
+}
+.profile-edit-btn{
+  border: none;
+  border-radius: 1.5rem;
+  width: 70%;
+  padding: 2%;
+  font-weight: 600;
+  color: #6c757d;
+  cursor: pointer;
+}
+.proile-rating{
+  font-size: 12px;
+  color: #818182;
+  margin-top: 5%;
+}
+.proile-rating span{
+  color: #495057;
+  font-size: 15px;
+  font-weight: 600;
+}
+.profile-head .nav-tabs{
+  margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+  font-weight:600;
+  border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+  border: none;
+  border-bottom:2px solid #0062cc;
+}
+.profile-work{
+  padding: 14%;
+  margin-top: -15%;
+}
+.profile-work p{
+  font-size: 12px;
+  color: #818182;
+  font-weight: 600;
+  margin-top: 10%;
+}
+.profile-work a{
+  text-decoration: none;
+  color: #495057;
+  font-weight: 600;
+  font-size: 14px;
+}
+.profile-work ul{
+  list-style: none;
+}
+.profile-tab label{
+  font-weight: 600;
+}
+.profile-tab p{
+  font-weight: 600;
+  color: #0062cc;
+}
+a.profile-edit-btn.btn {
+  background-color: #6dc583;
+  color: #fff;
+  margin-left: 15px;
+  margin-bottom: 20px;
+}

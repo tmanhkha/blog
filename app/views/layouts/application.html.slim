@@ -1,0 +1,165 @@
+doctype html
+html
+  head
+    title
+      | Blog
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    - if notice
+      p.alert.alert-success.flash
+        a.close[data-dismiss="alert"]
+          | ×
+        = notice
+    - if alert
+      p.alert.alert-danger.flash
+        a.close[data-dismiss="alert"]
+          | ×
+        = alert
+    header.header-area
+      .container
+        .header-wrap
+          .header-top.d-flex.justify-content-between.align-items-lg-center.navbar-expand-lg
+            .col.menu-left
+              = link_to 'Home', posts_path, class: 'active'
+              a[href="category.html"]
+                | Category
+              a[href="archive.html"]
+                | Archive
+            .col-5.text-lg-center.mt-2.mt-lg-0
+              span.logo-outer
+                span.logo-inner
+                  a[href="/"]
+                    = image_tag "logo.png", class: "mx-auto"
+            nav.col.navbar.navbar-expand-lg.justify-content-end
+              button.navbar-toggler[type="button" data-toggle="collapse" data-target="#collapsibleNavbar"]
+                span.lnr.lnr-menu
+              #collapsibleNavbar.collapse.navbar-collapse.menu-right
+                ul.navbar-nav.justify-content-center.w-100
+                  li.nav-item.hide-lg
+                    a.nav-link[href="#"]
+                      | Home
+                  li.nav-item.hide-lg
+                    a.nav-link[href="#"]
+                      | Category
+                  li.nav-item
+                    a.nav-link[href="#"]
+                      | Elements
+                  li.nav-item
+                    a.nav-link[href="#"]
+                      | Contact
+                  li.nav-item.dropdown
+                    a#navbardrop.nav-link.dropdown-toggle[href="#" data-toggle="dropdown"]
+                      |  User 
+                    .dropdown-menu
+                      - if user_signed_in?
+                        = link_to 'Edit profile', edit_user_registration_path , class: 'dropdown-item'
+                        = link_to 'My Profile', user_path(current_user.id) , class: 'dropdown-item'
+                        = link_to 'Logout', sign_out_path , method: :delete, data: { confirm: "Are you suare?" }, class: 'dropdown-item'
+                      - else
+                        = link_to 'Sign in', sign_in_path, class: 'dropdown-item'
+                      = link_to 'Sign up', sign_up_path, class: 'dropdown-item'
+    = yield
+    section#footer
+      .container
+        .row.text-center.text-xs-center.text-sm-left.text-md-left
+          .col-xs-12.col-sm-4.col-md-4
+            h5
+              | Quick links
+            ul.list-unstyled.quick-links
+              li
+                a[href="javascript:void();"]
+                  i.fa.fa-angle-double-right
+                  | Home
+              li
+                a[href="javascript:void();"]
+                  i.fa.fa-angle-double-right
+                  | About
+              li
+                a[href="javascript:void();"]
+                  i.fa.fa-angle-double-right
+                  | FAQ
+              li
+                a[href="javascript:void();"]
+                  i.fa.fa-angle-double-right
+                  | Get Started
+              li
+                a[href="javascript:void();"]
+                  i.fa.fa-angle-double-right
+                  | Videos
+          .col-xs-12.col-sm-4.col-md-4
+            h5
+              | Quick links
+            ul.list-unstyled.quick-links
+              li
+                a[href="javascript:void();"]
+                  i.fa.fa-angle-double-right
+                  | Home
+              li
+                a[href="javascript:void();"]
+                  i.fa.fa-angle-double-right
+                  | About
+              li
+                a[href="javascript:void();"]
+                  i.fa.fa-angle-double-right
+                  | FAQ
+              li
+                a[href="javascript:void();"]
+                  i.fa.fa-angle-double-right
+                  | Get Started
+              li
+                a[href="javascript:void();"]
+                  i.fa.fa-angle-double-right
+                  | Videos
+          .col-xs-12.col-sm-4.col-md-4
+            h5
+              | Quick links
+            ul.list-unstyled.quick-links
+              li
+                a[href="javascript:void();"]
+                  i.fa.fa-angle-double-right
+                  | Home
+              li
+                a[href="javascript:void();"]
+                  i.fa.fa-angle-double-right
+                  | About
+              li
+                a[href="javascript:void();"]
+                  i.fa.fa-angle-double-right
+                  | FAQ
+              li
+                a[href="javascript:void();"]
+                  i.fa.fa-angle-double-right
+                  | Get Started
+              li
+                a[href="https://wwwe.sunlimetech.com" title="Design and developed by"]
+                  i.fa.fa-angle-double-right
+                  | Imprint
+        .row
+          .col-xs-12.col-sm-12.col-md-12.mt-2.mt-sm-5
+            ul.list-unstyled.list-inline.social.text-center
+              li.list-inline-item
+                a[href="javascript:void();"]
+                  i.fa.fa-facebook
+              li.list-inline-item
+                a[href="javascript:void();"]
+                  i.fa.fa-twitter
+              li.list-inline-item
+                a[href="javascript:void();"]
+                  i.fa.fa-instagram
+              li.list-inline-item
+                a[href="javascript:void();"]
+                  i.fa.fa-google-plus
+              li.list-inline-item
+                a[href="javascript:void();" target="_blank"]
+                  i.fa.fa-envelope
+          hr
+        .row
+          .col-xs-12.col-sm-12.col-md-12.mt-2.mt-sm-2.text-center.text-white
+            p.h6
+              | &copy All right Reversed.
+              a.text-green.ml-2[href="https://www.sunlimetech.com" target="_blank"]
+                | Sunlimetech
+          hr

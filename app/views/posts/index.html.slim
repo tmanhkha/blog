@@ -1,0 +1,49 @@
+.container
+	.row
+		= link_to 'Create post', new_post_path, class: 'btn btn success btn-create'
+.container
+  - @posts.each do |post|
+		.row
+			.col-md-12
+				.row
+					.col-md-12.post
+						.row
+							.col-md-12
+								h4
+									strong
+										= post.title
+						.row
+							.col-md-12.post-header-line
+								span.glyphicon.glyphicon-user
+								| by 
+								a[href="#"]
+									= post.user.name
+								|  | 
+								span.glyphicon.glyphicon-calendar
+									= post.created_at.strftime("%H:%M %d/%m/%Y")
+								|  |
+								span.glyphicon.glyphicon-comment
+								a[href="#"]
+									|  3 Comments
+								|  | 
+								i.icon-share
+								a[href="#"]
+									| 39 Shares
+								| 
+								span.dropdown.actions-post
+									a#dropdownMenuLink.dropdown-toggle[href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+										i.fa.fa-ellipsis-v
+									.dropdown-menu[aria-labelledby="dropdownMenuLink"]
+										= link_to 'Show', post_path(post), class: 'dropdown-item'
+										- if user_signed_in? && current_user.posts.include?(post)
+											hr
+											= link_to 'Edit', edit_post_path(post), class: 'dropdown-item'
+											hr
+											= link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure' }, class: 'dropdown-item'
+						.row.post-content
+							.col-md-3
+								a[href="#"] = image_tag  post.image.url, width: "100%"
+							.col-md-9
+								p = post.description[0..500] ...
+								p
+									= link_to 'Read more', post_path(post), class: 'btn btn-read-more'

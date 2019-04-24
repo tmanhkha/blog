@@ -24,12 +24,8 @@
 								|  |
 								span.glyphicon.glyphicon-comment
 								a[href="#"]
-									|  3 Comments
-								|  | 
-								i.icon-share
-								a[href="#"]
-									| 39 Shares
-								| 
+									= post.comments.count
+									|  Comments
 								span.dropdown.actions-post
 									a#dropdownMenuLink.dropdown-toggle[href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
 										i.fa.fa-ellipsis-v

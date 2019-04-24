@@ -6,4 +6,21 @@ div.container
   .row
     h3 = @post.title
   .row
-    p  = @post.description 
+    p  = @post.description
+  - if @post.comments.present?
+    .container#comments
+      - @post.comments.each do |comment|
+        == render 'posts/comment', comment: comment
+  = form_for @comment, url: post_comments_path(@post.id), method: :post, remote: true do |f|
+    .field.form-group
+      = f.text_field :content, class: 'form-control comment', required: true
+    - if user_signed_in?
+      = f.hidden_field :user_id, value: current_user.id
+    - else 
+      span = 'Please' 
+      = link_to ' Sign in ', sign_in_path
+      span = 'Or' 
+      = link_to ' Sign up ', sign_up_path
+      span = 'to comment' 
+    .actions 
+      = f.submit

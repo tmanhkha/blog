@@ -6,38 +6,38 @@ h2.text-center Profile Information
         - if current_user.avatar.present?
           = image_tag current_user.avatar.url
         - else
-          img[src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""]
+          img[src="https://previews.123rf.com/images/pandavector/pandavector1607/pandavector160700062/60025051-businessman-icon-flat-single-avatar-people-icon-from-the-big-avatar-collection-stock-vector.jpg" alt=""]
         .file.btn.btn-lg.btn-primary
           |  Change Photo
           = form_for current_user, url: user_path(current_user.id), method: :put do |f|
             = f.file_field :avatar, onchange: 'this.form.submit();'
-    .col-md-6
-      .profile-head
-        h5 = current_user.name
-        h6
-          |  Web Developer and Designer 
+    .col-md-4
+      .col-md-8
+        #myTabContent.tab-content.profile-tab
+          #home.tab-pane.fade.show.active[role="tabpanel" aria-labelledby="home-tab"]
+            .row
+              .col-md-6
+                label
+                  | User Id
+              .col-md-6
+                p = current_user.id
+            .row
+              .col-md-6
+                label
+                  | Name
+              .col-md-6
+                p = current_user.name
+            .row
+              .col-md-6
+                label
+                  | Email
+              .col-md-6
+                p = current_user.email
+            .row
+              .col-md-6
+                label
+                  | Role
+              .col-md-6
+                p = current_user.role
     .col-md-2
       = link_to 'Edit profile', edit_user_registration_path, class: 'profile-edit-btn btn'
-  .row
-    .col-md-4
-    .col-md-8
-      #myTabContent.tab-content.profile-tab
-        #home.tab-pane.fade.show.active[role="tabpanel" aria-labelledby="home-tab"]
-          .row
-            .col-md-6
-              label
-                | User Id
-            .col-md-6
-              p = current_user.id
-          .row
-            .col-md-6
-              label
-                | Name
-            .col-md-6
-              p = current_user.name
-          .row
-            .col-md-6
-              label
-                | Email
-            .col-md-6
-              p = current_user.email

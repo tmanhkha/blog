@@ -1,12 +1,20 @@
-.row
+.row.comment-partial
   .col-sm-1
     .thumbnail
       - if comment.user.avatar.url.present?
         = image_tag comment.user.avatar.url, class: 'img-responsive user-photo', width: '90px'
       - else
-        img[src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" width="90px"]
+        img[src="https://previews.123rf.com/images/pandavector/pandavector1607/pandavector160700062/60025051-businessman-icon-flat-single-avatar-people-icon-from-the-big-avatar-collection-stock-vector.jpg" alt="" width="90px"]
   .col-sm-5
     .panel.panel-default
       .panel-heading
         strong = comment.user.name
+      - if user_signed_in? && current_user.comments.include?(comment)
+        span.dropdown.actions-post
+          p#dropdownMenuLink.dropdown-toggle[role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+            i.fa.fa-ellipsis-v
+          .dropdown-menu[aria-labelledby="dropdownMenuLink"]
+            = link_to 'Edit', edit_post_comment_path(@post.id, comment.id), class: 'dropdown-item'
+            hr
+            = link_to 'Delete', post_comment_path(@post.id, comment.id), method: :delete, data: { confirm: 'Are you sure' }, class: 'dropdown-item destroy-comment', remote: true
       .panel-body = comment.content

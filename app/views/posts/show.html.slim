@@ -7,8 +7,8 @@ div.container
     h3 = @post.title
   .row
     p  = @post.description
-  - if @post.comments.present?
-    .container#comments
+  .container#comments
+    - if @post.comments.present?
       - @post.comments.each do |comment|
         == render 'posts/comment', comment: comment
   = form_for @comment, url: post_comments_path(@post.id), method: :post, remote: true do |f|

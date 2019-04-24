@@ -3,7 +3,7 @@
 		= link_to 'Create post', new_post_path, class: 'btn btn success btn-create'
 .container
   - @posts.each do |post|
-		.row
+		div[class="#{cycle("row even", "row odd")}"]
 			.col-md-12
 				.row
 					.col-md-12.post

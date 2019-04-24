@@ -16,5 +16,6 @@ global.$ = jQuery;
 $(document).ready(function(){
   $('.close').click(function(){
     $('.alert.flash').hide();
-  })
-})
+  });
+});
+

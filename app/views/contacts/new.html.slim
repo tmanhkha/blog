@@ -1,0 +1,27 @@
+.container
+  h2.text-center Contact
+  .row.justify-content-center
+    .col-12.col-md-8.col-lg-6.pb-5
+      = form_for @contact do |f|
+        .card.border-primary.rounded-0
+          .card-body.p-3
+            .form-group
+              .input-group.mb-2
+                .input-group-prepend
+                  .input-group-text
+                    .fa.fa-user.text-info
+                = f.text_field :name, required: true, class: 'form-control', placeholder: 'Name'
+            .form-group
+              .input-group.mb-2
+                .input-group-prepend
+                  .input-group-text
+                    .fa.fa-envelope.text-info
+                = f.email_field :email, required: true, class: 'form-control', placeholder: 'Email address'
+            .form-group
+              .input-group.mb-2
+                .input-group-prepend
+                  .input-group-text
+                    .fa.fa-comment.text-info
+                = f.text_field :message, required: true, class: 'form-control', placeholder: 'Message'
+            .text-center
+            = f.submit 'Send Message', class: "btn btn-info btn-block rounded-0 py-2"

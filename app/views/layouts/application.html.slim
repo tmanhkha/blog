@@ -48,8 +48,7 @@ html
                     a.nav-link[href="#"]
                       | Elements
                   li.nav-item
-                    a.nav-link[href="#"]
-                      | Contact
+                    = link_to 'Contact', new_contact_path, class: 'nav-link' 
                   li.nav-item.dropdown
                     a#navbardrop.nav-link.dropdown-toggle[href="#" data-toggle="dropdown"]
                       |  User 

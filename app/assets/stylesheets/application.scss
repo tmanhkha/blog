@@ -16,7 +16,8 @@
  @import "bootstrap";
  @import "font-awesome";
 
- section {
+
+section {
   padding: 60px 0;
 }
 
@@ -239,9 +240,9 @@ div#error_explanation {
 }
 
 .header-area {
+  background-color: aliceblue;
   margin-bottom: 30px;
   position: relative;
-  background-color: #fff;
   width: 100%;
   z-index: 999999;
   -webkit-transition: all 0.4s ease 0s;

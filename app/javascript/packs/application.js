@@ -10,9 +10,12 @@ require("channels")
 //= require jquery3
 //= require popper
 //= require bootstrap
+import $ from 'jquery';
+global.$ = jQuery;
 
 $(document).ready(function(){
   $('.close').click(function(){
     $('.alert.flash').hide();
-  })
-})
+  });
+});
+

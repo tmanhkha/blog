@@ -44,7 +44,7 @@ html
                   | Home
               li.has-dropdown.megamenu
                 a[href="#"]
-                  | Fashion
+                  | Category
                 .dropdown
                   .dropdown-body
                     .row
@@ -235,12 +235,12 @@ html
           .col-md-3
             .footer-widget
               h3.footer-title
-                | Newsletter
+                | Blog
               .newsletter-widget
-                form
+                = form_tag new_contact_path, method: :get
                   p
                     | Nec feugiat nisl pretium fusce id velit ut tortor pretium.
-                  input.input[name="newsletter" placeholder="Enter Your Email"]
+                  input.input[type="email" name="email" placeholder="Enter Your Email"]
                   button.primary-button
                     | Subscribe
         .footer-bottom.row

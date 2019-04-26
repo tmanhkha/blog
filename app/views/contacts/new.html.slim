@@ -16,7 +16,7 @@
                 .input-group-prepend
                   .input-group-text
                     .fa.fa-envelope.text-info
-                = f.email_field :email, required: true, class: 'form-control', placeholder: 'Email address'
+                = f.email_field :email, required: true, class: 'form-control', placeholder: 'Email address', value: params[:email]
             .form-group
               .input-group.mb-2
                 .input-group-prepend

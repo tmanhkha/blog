@@ -232,18 +232,6 @@ html
                   li
                     a[href="#"]
                       | Life
-                  li
-                    a[href="#"]
-                      | News
-                  li
-                    a[href="#"]
-                      | Magazine
-                  li
-                    a[href="#"]
-                      | Food
-                  li
-                    a[href="#"]
-                      | Health
           .col-md-3
             .footer-widget
               h3.footer-title
@@ -277,3 +265,26 @@ html
             .footer-copyright
               |  Copyright ©
               | 2019 All rights reserved
+
+#mainMenu.mainMenuOverlay.floating2
+  .navire.floating3
+  .itemMenuBox.bills
+    = link_to new_post_path, class: 'itemMenu' do
+      i.fa.fa-pencil[aria-hidden="true"]
+  .itemMenuBox.tarsheed
+    a.itemMenu[href="javascript:void(0)"]
+      i.fa.fa-diamond[aria-hidden="true"]
+  .itemMenuBox.employees
+    a.itemMenu[href="javascript:void(0)"]
+      i.fa.fa-users[aria-hidden="true"]
+  .itemMenuBox.location
+    a.itemMenu[href="javascript:void(0)"]
+      i.fa.fa-location-arrow[aria-hidden="true"]
+  .itemMenuBox.eservices
+    a.itemMenu[href="javascript:void(0)"]
+      i.fa.fa-key[aria-hidden="true"]
+  .itemMenuBox.contact
+    = link_to new_contact_path, class: 'itemMenu' do
+      i.fa.fa-phone[aria-hidden="true"]
+  a.toggleMenu.floating[href="javascript:void(0)"]
+    i.fa.fa-bars[aria-hidden="true"]

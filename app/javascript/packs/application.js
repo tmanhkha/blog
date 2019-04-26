@@ -32,5 +32,9 @@ $(document).ready(function(){
     const clickedElement = $(event.target.parentNode).children().last();
     clickedElement.toggleClass('show');
   });
+
+  $(document).on("click", ".toggleMenu", function () { 
+    $("#mainMenu").toggleClass('open');
+  });
 });
 

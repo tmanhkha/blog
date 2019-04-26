@@ -8,8 +8,7 @@ class ContactsController < ApplicationController
 
     if contact.valid?
       ContactJob.perform_later(contact_params.to_h)
-      flash[:notice] = 'Your contact has sent successfully'
-      redirect_to root_path
+      redirect_to root_path, notice: 'Your contact has sent successfully'
     else
       flash[:danger] = 'Your contact was not valid !'
       render :new

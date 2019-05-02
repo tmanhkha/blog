@@ -2,9 +2,9 @@
   .col-sm-1
     .thumbnail
       - if comment.user_avatar.url.present?
-        = image_tag comment.user.avatar.url, class: 'img-responsive user-photo', width: '90px'
+        = image_tag comment.user.avatar.url, class: 'img-responsive user-photo', width: '90px', height: '98px'
       - else
-        img[src="https://previews.123rf.com/images/pandavector/pandavector1607/pandavector160700062/60025051-businessman-icon-flat-single-avatar-people-icon-from-the-big-avatar-collection-stock-vector.jpg" alt="" width="90px"]
+        = image_tag User::DEFAULT_AVATAR, width: '90px'
   .col-sm-5
     .panel.panel-default
       .panel-heading

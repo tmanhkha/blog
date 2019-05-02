@@ -4,8 +4,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if params[:user][:avatar].present?
-      current_user.update(avatar: params[:user][:avatar])
+    if params[:user][:avatar].present? && current_user.update(avatar: params[:user][:avatar])
       flash[:notice] = 'Update avatar successfully'
     else
       flash[:danger] = 'Update avatar unsuccessfully'

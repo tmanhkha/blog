@@ -4,9 +4,8 @@ class ContactsController < ApplicationController
   end
 
   def create
-    contact = Contact.new contact_params
-
-    if contact.valid?
+    @contact = Contact.new contact_params
+    if verify_recaptcha(model: @contact) && @contact.valid?
       ContactJob.perform_later(contact_params.to_h)
       redirect_to root_path, notice: 'Your contact has sent successfully'
     else

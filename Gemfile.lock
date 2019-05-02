@@ -182,6 +182,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    json (2.2.0)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.1.1)
@@ -289,6 +290,8 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    recaptcha (4.14.0)
+      json
     redis (4.1.0)
     regexp_parser (1.4.0)
     remotipart (1.4.2)
@@ -401,6 +404,7 @@ DEPENDENCIES
   rails (~> 6.0.0.beta3)
   rails-controller-testing
   rails_admin
+  recaptcha
   rspec-core!
   rspec-expectations!
   rspec-mocks!

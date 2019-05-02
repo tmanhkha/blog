@@ -23,5 +23,11 @@
                   .input-group-text
                     .fa.fa-comment.text-info
                 = f.text_field :message, required: true, class: 'form-control', placeholder: 'Message'
+            .form-group
+              .input-group.mb-2
+                .input-group-prepend
+                  .input-group-text
+                    .fa.fa-comment.text-info
+                      = recaptcha_tags
             .text-center
             = f.submit 'Send Message', class: "btn btn-info btn-block rounded-0 py-2"

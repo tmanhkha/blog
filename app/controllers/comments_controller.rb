@@ -3,10 +3,9 @@ class CommentsController < ApplicationController
   before_action :find_comment, only: [:edit, :update, :destroy]
 
   def create
-    @comment = @post.comments.new comment_params
+    @comment = @post.comments.new(comment_params)
     if @comment.save
       respond_to do |format|  
-        format.html { redirect_to @comment.post, notice: 'Comment was successfully created.' }
         format.js { render layout: false }
         format.json { render @comment.post, status: :created, location: @comment }
       end
@@ -43,7 +42,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content, :user_id, :post_id)
+    params.require(:comment).permit(:content).merge(user: current_user, post: @post)
   end
 
   def find_comment

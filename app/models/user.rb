@@ -4,6 +4,7 @@ class User < ApplicationRecord
   include RailsAdminUser
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  DEFAULT_AVATAR = 'https://previews.123rf.com/images/pandavector/pandavector1607/pandavector160700062/60025051-businessman-icon-flat-single-avatar-people-icon-from-the-big-avatar-collection-stock-vector.jpg'
   mount_uploader :avatar, PhotoUploader
 
   enum role: [:user, :admin]

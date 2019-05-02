@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+
+  PER_PAGE = 5
   include RailsAdminPost
   mount_uploader :image, PhotoUploader
 

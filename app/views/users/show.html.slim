@@ -6,7 +6,7 @@ h2.text-center Profile Information
         - if current_user.avatar.present?
           = image_tag current_user.avatar.url
         - else
-          img[src="https://previews.123rf.com/images/pandavector/pandavector1607/pandavector160700062/60025051-businessman-icon-flat-single-avatar-people-icon-from-the-big-avatar-collection-stock-vector.jpg" alt=""]
+          = image_tag User::DEFAULT_AVATAR
         .file.btn.btn-lg.btn-primary
           |  Change Photo
           = form_for current_user, url: user_path(current_user.id), method: :put do |f|

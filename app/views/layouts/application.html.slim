@@ -7,6 +7,8 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    link[href="https://fonts.googleapis.com/css?family=PT+Serif:400,700i" rel="stylesheet"]
+    link[rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"]
   body
     - if notice
       p.alert.alert-success.flash
@@ -18,74 +20,275 @@ html
         a.close[data-dismiss="alert"]
           | ×
         = alert
-    header.header-area
-      .container
-        .header-wrap
-          .header-top.d-flex.justify-content-between.align-items-lg-center.navbar-expand-lg
-            .col.menu-left
-              = link_to 'Home', posts_path, class: 'active'
-              a[href="category.html"]
-                | Category
-              a[href="archive.html"]
-                | Archive
-            .col-5.text-lg-center.mt-2.mt-lg-0
-              span.logo-outer
-                span.logo-inner
-                  a[href="/"]
-                    = image_tag "logo.png", class: "mx-auto"
-            nav.col.navbar.navbar-expand-lg.justify-content-end
-              button.navbar-toggler[type="button" data-toggle="collapse" data-target="#collapsibleNavbar"]
-                span.lnr.lnr-menu
-              #collapsibleNavbar.collapse.navbar-collapse.menu-right
-                ul.navbar-nav.justify-content-center.w-100
-                  li.nav-item.hide-lg
-                    a.nav-link[href="#"]
-                      | Home
-                  li.nav-item.hide-lg
-                    a.nav-link[href="#"]
-                      | Category
-                  li.nav-item
-                    a.nav-link[href="#"]
-                      | Elements
-                  li.nav-item
-                    a.nav-link[href="#"]
-                      | Contact
-                  li.nav-item.dropdown
-                    a#navbardrop.nav-link.dropdown-toggle[href="#" data-toggle="dropdown"]
-                      |  User 
-                    .dropdown-menu
-                      - if user_signed_in?
-                        = link_to 'My Profile', user_path(current_user.id) , class: 'dropdown-item'
-                        = link_to 'Logout', sign_out_path , method: :delete, data: { confirm: "Are you suare?" }, class: 'dropdown-item'
-                      - else
-                        = link_to 'Sign in', sign_in_path, class: 'dropdown-item'
-                        = link_to 'Sign up', sign_up_path, class: 'dropdown-item'
-    = yield
-    section#footer
-      .container
-        .row
-          .col-xs-12.col-sm-12.col-md-12.mt-2.mt-sm-5
-            ul.list-unstyled.list-inline.social.text-center
-              li.list-inline-item
-                a[href="javascript:void();"]
+    header#header
+      #nav
+        #nav-top
+          .container
+            ul.nav-social
+              li
+                a[href="#"]
                   i.fa.fa-facebook
-              li.list-inline-item
-                a[href="javascript:void();"]
+              li
+                a[href="#"]
                   i.fa.fa-twitter
-              li.list-inline-item
-                a[href="javascript:void();"]
-                  i.fa.fa-instagram
-              li.list-inline-item
-                a[href="javascript:void();"]
+              li
+                a[href="#"]
                   i.fa.fa-google-plus
-              li.list-inline-item
-                a[href="javascript:void();" target="_blank"]
-                  i.fa.fa-envelope
-          hr
+              li
+                a[href="#"]
+                  i.fa.fa-instagram
+        #nav-bottom
+          .container
+            ul.nav-menu
+              li
+                a[href="/"]
+                  | Home
+              li.has-dropdown.megamenu
+                a[href="#"]
+                  | Category
+                .dropdown
+                  .dropdown-body
+                    .row
+                      .col-md-3
+                        h4.dropdown-heading
+                          | Categories
+                        ul.dropdown-list
+                          li
+                            a[href="#"]
+                              | Lifestyle
+                          li
+                            a[href="#"]
+                              | Fashion
+                          li
+                            a[href="#"]
+                              | Technology
+                          li
+                            a[href="#"]
+                              | Health
+                          li
+                            a[href="#"]
+                              | Travel
+                      .col-md-3
+                        h4.dropdown-heading
+                          | Lifestyle
+                        ul.dropdown-list
+                          li
+                            a[href="#"]
+                              | Lifestyle
+                          li
+                            a[href="#"]
+                              | Fashion
+                          li
+                            a[href="#"]
+                              | Health
+                        h4.dropdown-heading
+                          | Technology
+                        ul.dropdown-list
+                          li
+                            a[href="#"]
+                              | Lifestyle
+                          li
+                            a[href="#"]
+                              | Travel
+                      .col-md-3
+                        h4.dropdown-heading
+                          | Fashion
+                        ul.dropdown-list
+                          li
+                            a[href="#"]
+                              | Fashion
+                          li
+                            a[href="#"]
+                              | Technology
+                        h4.dropdown-heading
+                          | Travel
+                        ul.dropdown-list
+                          li
+                            a[href="#"]
+                              | Lifestyle
+                          li
+                            a[href="#"]
+                              | Healtth
+                          li
+                            a[href="#"]
+                              | Fashion
+                      .col-md-3
+                        h4.dropdown-heading
+                          | Health
+                        ul.dropdown-list
+                          li
+                            a[href="#"]
+                              | Technology
+                          li
+                            a[href="#"]
+                              | Fashion
+                          li
+                            a[href="#"]
+                              | Health
+                          li
+                            a[href="#"]
+                              | Travel
+              li
+                a[href="#"]
+                  | Technology
+              li
+                a[href="#"]
+                  | Health
+              li
+                = link_to 'Contact', new_contact_path
+              .nav-btns
+                button.aside-btn
+                  i.fa.fa-user-circle-o
+        #nav-aside
+          ul.nav-aside-menu
+            - if user_signed_in? 
+              li
+                = link_to 'My Profile', user_path(current_user.id)
+              li
+                = link_to 'Logout', sign_out_path , method: :delete, data: { confirm: "Are you suare?" }
+            - else
+              li
+                = link_to 'Sign in', sign_in_path
+              li
+                = link_to 'Sign up', sign_up_path
+          button.nav-close.nav-aside-close
+            span
+    = yield
+    footer#footer
+      .container
         .row
-          .col-xs-12.col-sm-12.col-md-12.mt-2.mt-sm-2.text-center.text-white
-            p.h6
-              | &copy All right Reversed.
-              a.text-green.ml-2[href="https://www.sunlimetech.com" target="_blank"]
-                | Sunlimetech
-          hr
+          .col-md-3
+            .footer-widget
+              .footer-logo
+              p
+                | Nec feugiat nisl pretium fusce id velit ut tortor pretium. Nisl purus in mollis nunc sed. Nunc non blandit massa enim nec.
+              ul.contact-social
+                li
+                  a.social-facebook[href="#"]
+                    i.fa.fa-facebook
+                li
+                  a.social-twitter[href="#"]
+                    i.fa.fa-twitter
+                li
+                  a.social-google-plus[href="#"]
+                    i.fa.fa-google-plus
+                li
+                  a.social-instagram[href="#"]
+                    i.fa.fa-instagram
+          .col-md-3
+            .footer-widget
+              h3.footer-title
+                | Categories
+              .category-widget
+                ul
+                  li
+                    a[href="#"]
+                      | Lifestyle 
+                      span
+                        | 451
+                  li
+                    a[href="#"]
+                      | Fashion 
+                      span
+                        | 230
+                  li
+                    a[href="#"]
+                      | Technology 
+                      span
+                        | 40
+                  li
+                    a[href="#"]
+                      | Travel 
+                      span
+                        | 38
+                  li
+                    a[href="#"]
+                      | Health 
+                      span
+                        | 24
+          .col-md-3
+            .footer-widget
+              h3.footer-title
+                | Tags
+              .tags-widget
+                ul
+                  li
+                    a[href="#"]
+                      | Social
+                  li
+                    a[href="#"]
+                      | Lifestyle
+                  li
+                    a[href="#"]
+                      | Blog
+                  li
+                    a[href="#"]
+                      | Travel
+                  li
+                    a[href="#"]
+                      | Technology
+                  li
+                    a[href="#"]
+                      | Fashion
+                  li
+                    a[href="#"]
+                      | Life
+          .col-md-3
+            .footer-widget
+              h3.footer-title
+                | Blog
+              .newsletter-widget
+                = form_tag new_contact_path, method: :get
+                  p
+                    | Nec feugiat nisl pretium fusce id velit ut tortor pretium.
+                  input.input[type="email" name="email" placeholder="Enter Your Email"]
+                  button.primary-button
+                    | Subscribe
+        .footer-bottom.row
+          .col-md-6.col-md-push-6
+            ul.footer-nav
+              li
+                a[href="#"]
+                  | Home
+              li
+                a[href="#"]
+                  | About Us
+              li
+                a[href="#"]
+                  | Contacts
+              li
+                a[href="#"]
+                  | Advertise
+              li
+                a[href="#"]
+                  | Privacy
+          .col-md-6.col-md-pull-6
+            .footer-copyright
+              |  Copyright ©
+              | 2019 All rights reserved
+    script[src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"]
+    script[src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"]
+    script[src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"]
+
+#mainMenu.mainMenuOverlay.floating2
+  .navire.floating3
+  .itemMenuBox.bills
+    = link_to new_post_path, class: 'itemMenu' do
+      i.fa.fa-pencil[aria-hidden="true"]
+  .itemMenuBox.tarsheed
+    a.itemMenu[href="javascript:void(0)"]
+      i.fa.fa-diamond[aria-hidden="true"]
+  .itemMenuBox.employees
+    a.itemMenu[href="javascript:void(0)"]
+      i.fa.fa-users[aria-hidden="true"]
+  .itemMenuBox.location
+    a.itemMenu[href="javascript:void(0)"]
+      i.fa.fa-location-arrow[aria-hidden="true"]
+  .itemMenuBox.eservices
+    a.itemMenu[href="javascript:void(0)"]
+      i.fa.fa-key[aria-hidden="true"]
+  .itemMenuBox.contact
+    = link_to new_contact_path, class: 'itemMenu' do
+      i.fa.fa-phone[aria-hidden="true"]
+  a.toggleMenu.floating[href="javascript:void(0)"]
+    i.fa.fa-bars[aria-hidden="true"]

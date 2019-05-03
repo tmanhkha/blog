@@ -1,0 +1,59 @@
+
+= render 'shared/breadcrumb', breadcrumb: ' Contact'
+.container.mt-5
+  .row.justify-content-center
+    .col-md-4
+      .media.contact-info
+        span.contact-info__icon
+          i.fa.fa-home
+        .media-body
+          h3
+            | California United States
+          p
+            | Santa monica bullevard
+      .media.contact-info
+        span.contact-info__icon
+          i.fa.fa-headphones
+        .media-body
+          h3
+            a[href="tel:454545654"]
+              | 123456789
+          p
+            | Mon to Fri 9am to 6pm
+      .media.contact-info
+        span.contact-info__icon
+          i.fa.fa-envelope-o
+        .media-body
+          h3
+            a[href="mailto:support@colorlib.com"]
+              | admin@gmail.com
+            | Send us your query anytime!
+    .col-md-8
+      = form_for @contact do |f|
+        .card.border.rounded-0
+          .card-body.p-3
+            .form-group
+              .input-group.mb-2
+                .input-group-prepend
+                  .input-group-text
+                    .fa.fa-user.text-info
+                = f.text_field :name, required: true, class: 'form-control', placeholder: 'Name'
+            .form-group
+              .input-group.mb-2
+                .input-group-prepend
+                  .input-group-text
+                    .fa.fa-envelope.text-info
+                = f.email_field :email, required: true, class: 'form-control', placeholder: 'Email address', value: params[:email]
+            .form-group
+              .input-group.mb-2
+                .input-group-prepend
+                  .input-group-text
+                    .fa.fa-comment.text-info
+                = f.text_field :message, required: true, class: 'form-control', placeholder: 'Message'
+            .form-group
+              .input-group.mb-2
+                .input-group-prepend
+                  .input-group-text
+                    = recaptcha_tags
+            .text-center
+            = f.submit 'Send Message', class: "btn btn-info btn-block rounded-0 py-2"

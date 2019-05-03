@@ -1,48 +1,128 @@
+#carousel-header.carousel.slide.mb-3[data-ride="carousel"]
+	ol.carousel-indicators
+		li.active[data-target="#carousel-header" data-slide-to="0"]
+		li[data-target="#carousel-header" data-slide-to="1"]
+		li[data-target="#carousel-header" data-slide-to="2"]
+	.carousel-inner
+		.carousel-item.active
+			img.d-block.w-100[src="https://neilpatel-qvjnwj7eutn3.netdna-ssl.com/wp-content/uploads/fly-images/76615/blog-460x277-c.jpg" alt="img-2" height="750px"]
+		.carousel-item
+			img.d-block.w-100[src="https://techtalk.vn/wp-content/uploads/2018/04/techtalk-blog.jpg" alt="img-3" height="750px"]
+		.carousel-item
+			img.d-block.w-100[src="http://www.azonnal.net/wp-content/uploads/2019/03/Blog-ca-nhan.jpg" alt="img-1" height="750px"]
+	a.carousel-control-prev[href="#carousel-header" role="button" data-slide="prev"]
+		span.carousel-control-prev-icon[aria-hidden="true"]
+		span.sr-only
+			| Previous
+	a.carousel-control-next[href="#carousel-header" role="button" data-slide="next"]
+		span.carousel-control-next-icon[aria-hidden="true"]
+		span.sr-only
+			| Next
 .container
-	.row
-		= link_to 'Create post', new_post_path, class: 'btn btn success btn-create'
-.container
-  - @posts.each do |post|
-		div[class="#{cycle("row even", "row odd")}"]
-			.col-md-12
-				.row
-					.col-md-12.post
-						.row
-							.col-md-12
-								h4
-									strong
-										= post.title
-						.row
-							.col-md-12.post-header-line
-								span.glyphicon.glyphicon-user
-								| by 
-								a[href="#"]
-									= post.user.name
-								|  | 
-								span.glyphicon.glyphicon-calendar
-									= post.created_at.strftime("%H:%M %d/%m/%Y")
-								|  |
-								span.glyphicon.glyphicon-comment
-								a[href="#"]
-									= post.comments.count
-									|  Comments
-								span.dropdown.actions-post
-									p#dropdownMenuLink.dropdown-toggle[role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
-										i.fa.fa-ellipsis-v
-									.dropdown-menu[aria-labelledby="dropdownMenuLink"]
-										= link_to 'Show', post_path(post), class: 'dropdown-item'
-										- if user_signed_in? && current_user.posts.include?(post)
-											hr
-											= link_to 'Edit', edit_post_path(post), class: 'dropdown-item'
-											hr
-											= link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure' }, class: 'dropdown-item'
-						.row.post-content
-							.col-md-3
-								a[href="#"] = image_tag  post.image.url, width: "100%"
-							.col-md-9
-								p = post.description[0..500] ...
+		.row
+			.col-lg-8
+				- @posts.each do |post|
+					.single-recent-blog-post.w-60
+						.thumb
+							= image_tag  post.image.url, class: 'img-fluid' 
+							ul.thumb-info
+								li
+									a[href="#"]
+										i.fa.fa-user-o
+										= post.user.name
+								li
+									a[href="#"]
+										i.fa.fa-calendar-o
+										= post.created_at.strftime("%H:%M %d/%m/%Y")
+								li
+									a[href="#"]
+										i.fa.fa-comments-o
+										= post.comments.count
+										|  Comment
+								li
+									span.dropdown.actions-post
+										span#dropdownMenuLink.dropdown-toggle[role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+											i.fa.fa-ellipsis-v
+										.dropdown-menu[aria-labelledby="dropdownMenuLink"]
+											= link_to 'Show', post_path(post), class: 'dropdown-item'
+											- if user_signed_in? && current_user.posts.include?(post)
+												hr
+												= link_to 'Edit', edit_post_path(post), class: 'dropdown-item'
+												hr
+												= link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure' }, class: 'dropdown-item'
+						.details.mt-20
+							h3 = post.title
+							p = post.description
+							= link_to post_path(post), class: 'btn btn-dark button' do
+								| Read More 
+								i.fa.fa-long-arrow-right
+			.col-lg-4.sidebar-widgets
+				.widget-wrap
+					.single-sidebar-widget.newsletter-widget
+						h4.single-sidebar-widget__title
+							| Newsletter
+						.form-group.mt-30
+							.col-autos
+								= form_tag new_contact_path, method: :get
+										input#inlineFormInputGroup.form-control.mb-2[type="email" name="email" placeholder="Enter Your Email"]
+										button.bbtns.d-block.mt-20.w-100
+											| Subscribe
+					.single-sidebar-widget.post-category-widget
+						h4.single-sidebar-widget__title
+							| Catgory
+						ul.cat-list.mt-20
+							li
+								a.d-flex.justify-content-between[href="#"]
+
 								p
-									= link_to 'Read more', post_path(post), class: 'btn btn-read-more'
+									| Technology
+								p
+									| (03)
+							li
+								a.d-flex.justify-content-between[href="#"]
+
+								p
+									| Software
+								p
+									| (09)
+							li
+								a.d-flex.justify-content-between[href="#"]
+
+								p
+									| Lifestyle
+								p
+									| (12)
+							li
+								a.d-flex.justify-content-between[href="#"]
+
+								p
+									| Shopping
+								p
+									| (02)
+							li
+								a.d-flex.justify-content-between[href="#"]
+
+								p
+									| Food
+								p
+									| (10)
+					.single-sidebar-widget.popular-post-widget
+						h4.single-sidebar-widget__title
+							| Popular Post
+						.popular-post-list
+							- @posts.each do |post|
+								.single-post-list
+									.thumb
+										= image_tag post.image.url, class: 'card-img rounded-0'
+										ul.thumb-info
+											li
+												a[href="#"]
+													= post.user.name
+											li
+												a[href="#"]
+													= post.created_at.strftime("%d %B")
+									.details.mt-20
+										h6 = post.title
 .container.panigate
 	.row
 		= paginate @posts, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm",  nav_class: "d-inline-b"

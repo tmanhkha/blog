@@ -1,0 +1,11 @@
+.hero-banner.hero-banner--sm.mb-3
+  .hero-banner__content
+    h1
+      = breadcrumb
+    nav.banner-breadcrumb[aria-label="breadcrumb"]
+      ol.breadcrumb
+        li.breadcrumb-item
+          a[href="#"]
+            | Home
+        li.breadcrumb-item.active[aria-current="page"]
+          = breadcrumb

@@ -1,6 +1,5 @@
-div.container
-  .row.mb-3
-    = link_to 'Back', posts_path, class: 'post-back'
+= render 'shared/breadcrumb', breadcrumb: ' Post detail'
+div.container.mt-5
   .row
     = image_tag  @post.image.url, width: '100%', height: '400px'
   .row

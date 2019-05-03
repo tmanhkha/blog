@@ -1,3 +1,114 @@
 // Place all the styles related to the contact controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.hero-banner {
+  position: relative;
+  background: url('https://techtalk.vn/wp-content/uploads/2018/04/techtalk-blog.jpg') left center no-repeat;
+  background-size: cover;
+  height: 400px;
+  z-index: 1
+}
+
+@media (min-width: 1000px) {
+  .hero-banner {
+      height:550px
+  }
+}
+
+.hero-banner--sm {
+  height: 300px
+}
+
+@media (min-width: 1000px) {
+  .hero-banner--sm {
+      height:400px
+  }
+}
+
+.hero-banner::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(1,3,15,0.2);
+  z-index: -1
+}
+
+.hero-banner__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  text-align: center
+}
+
+.hero-banner__content>* {
+  color: #fff
+}
+
+.hero-banner__content h3 {
+  font-size: 27px;
+  margin-bottom: 0
+}
+
+.hero-banner__content h1 {
+  margin-bottom: 12px
+}
+
+.hero-banner__content h4 {
+  font-size: 18px
+}
+
+.banner-breadcrumb {
+  display: inline-block
+}
+
+.banner-breadcrumb .breadcrumb {
+  background: transparent;
+  padding: 0
+}
+
+.banner-breadcrumb .breadcrumb-item {
+  padding: .1rem
+}
+
+.banner-breadcrumb .breadcrumb-item a {
+  text-transform: capitalize;
+  color: #fff
+}
+
+.banner-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+  color: #fff;
+  padding-right: .1rem;
+  content: "-"
+}
+
+.banner-breadcrumb .breadcrumb-item.active {
+  color: #fff
+}
+
+.contact-info__icon {
+  margin-right: 20px
+}
+
+.contact-info__icon i,.contact-info__icon span {
+  color: #ff9907;
+  font-size: 20px
+}
+
+.contact-info .media-body h3 {
+  font-size: 16px;
+  margin-bottom: 0;
+  font-weight: 600
+}
+
+.contact-info .media-body h3 a {
+  color: #3a414e
+}
+
+.contact-info .media-body p {
+  color: #797979
+}

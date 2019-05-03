@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'posts#index'
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   devise_scope :user do
     get 'sign_in', to: 'devise/sessions#new'
     get 'sign_up', to: 'devise/registrations#new'

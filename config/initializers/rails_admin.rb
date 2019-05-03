@@ -6,9 +6,10 @@ RailsAdmin.config do |config|
   # config.authenticate_with do
   #   warden.authenticate! scope: :user
   # end
-  config.included_models = %w(User Post)
+  config.included_models = %w(User Post Comment)
   config.authenticate_with do
     warden.authenticate! scope: :user
+    redirect_to main_app.root_path if current_user.role === "user"
   end
   config.current_user_method(&:current_user)
   # config.current_user_method(&:current_user)

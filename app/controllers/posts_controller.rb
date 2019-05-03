@@ -2,10 +2,11 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :destroy, :update]
   def index
-    @posts = Post.all.order("created_at desc")
+    @posts = Post.order("created_at desc").page(params[:page]).per(Post::PER_PAGE)
   end
 
   def show
+    @comment = Comment.new
   end
 
   def new

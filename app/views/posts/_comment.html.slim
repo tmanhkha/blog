@@ -1,0 +1,20 @@
+.row.comment-partial
+  .col-sm-1
+    .thumbnail
+      - if comment.user_avatar.url.present?
+        = image_tag comment.user.avatar.url, class: 'img-responsive user-photo', width: '90px', height: '98px'
+      - else
+        = image_tag User::DEFAULT_AVATAR, width: '90px'
+  .col-sm-5
+    .panel.panel-default
+      .panel-heading
+        strong = comment.user.name
+      - if user_signed_in? && current_user.comments.include?(comment)
+        span.dropdown.actions-post
+          p#dropdownMenuLink.dropdown-toggle[role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+            i.fa.fa-ellipsis-v
+          .dropdown-menu[aria-labelledby="dropdownMenuLink"]
+            = link_to 'Edit', edit_post_comment_path(@post.id, comment.id), class: 'dropdown-item edit-comment'
+            hr
+            = link_to 'Delete', post_comment_path(@post.id, comment.id), method: :delete, data: { confirm: 'Are you sure' }, class: 'dropdown-item destroy-comment', remote: true
+      .panel-body = comment.content

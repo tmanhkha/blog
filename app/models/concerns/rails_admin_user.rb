@@ -9,6 +9,12 @@ module RailsAdminUser
         field :email
         field :avatar
       end
+
+      edit do
+        field :name
+        field :email
+        field :avatar
+      end
     end
   end
 end

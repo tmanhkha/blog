@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     @posts = Post.order("created_at desc").page(params[:page]).per(Post::PER_PAGE)
   end
 
-  def show
+def show
     @comment = Comment.new
   end
 

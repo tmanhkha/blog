@@ -7,6 +7,7 @@ div.container
     h3 = @post.title
   .row
     p  = @post.description
+    
   .container#comments
     - if @post.comments.present?
       - @post.comments.each do |comment|

@@ -17,5 +17,24 @@ $(document).ready(function(){
   $('.close').click(function(){
     $('.alert.flash').hide();
   });
+
+  $(document).on("click", "button.aside-btn", function () { 
+    $('#nav').addClass('shadow-active');
+    $('#nav-aside').addClass('active');
+  });
+
+  $(document).on("click", "button.nav-close.nav-aside-close", function () { 
+    $('#nav').removeClass('shadow-active');
+    $('#nav-aside').removeClass('active');
+  });
+
+  $(document).on("click", "#dropdownMenuLink", function(event){
+    const clickedElement = $(event.target.parentNode).children().last();
+    clickedElement.toggleClass('show');
+  });
+
+  $(document).on("click", ".toggleMenu", function () { 
+    $("#mainMenu").toggleClass('open');
+  });
 });
 
